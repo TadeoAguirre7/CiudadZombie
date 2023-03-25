@@ -1,11 +1,5 @@
-/* Aca podes encontrar al zombie caminante cuyo codigo esta completo. Podes
-modificarlo para hacer que se comporte de la forma que mas te guste.
-Este zombie recibe los mismos parametros que el objeto Enemigo. Podes consultar
-el archivo Enemigo.js para entender que es cada uno. */
-
+/* Este zombie recibe los mismos parametros que el objeto Enemigo. */
 var ZombieCaminante = function(sprite, x, y, ancho, alto, velocidad, rangoMov) {
-  /* ZombieCaminante llama al constructor de Enemigo utilizando los parametros
-  necesarios */
   Enemigo.call(this, sprite, x, y, ancho, alto, velocidad, rangoMov);
 }
 /* Completamos la creacion del objeto asignando su prototipo y la funcion
@@ -38,10 +32,3 @@ ZombieCaminante.prototype.mover = function() {
   }
 }
 
-/* El ataque lo toma de su prototipo Enemigo que ya implementa un metodo atacar
-haciendole perder 1 vida al jugador. Si se quiere modificar el valor de ataque
-del zombie caminante habra que reimplementar este metodo desde el objeto ZombieCaminante
-
-ZombieConductor.prototype.atacar = function(jugador) {
-  ...
-}*/

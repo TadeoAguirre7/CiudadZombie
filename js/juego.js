@@ -1,12 +1,5 @@
 /* El objeto Juego sera el encargado del control de todo el resto de los Objetos
-existentes.
-Le dara ordenes al Dibujante para que dibuje entidades en la pantalla. Cargara
-el mapa, chequeara colisiones entre los objetos y actualizara sus movimientos
-y ataques. Gran parte de su implementacion esta hecha, pero hay espacios con el
-texto COMPLETAR que deben completarse segun lo indique la consigna.
-
-El objeto Juego contiene mucho codigo. Tomate tu tiempo para leerlo tranquilo
-y entender que es lo que hace en cada una de sus partes. */
+existentes. */
 
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
@@ -41,7 +34,7 @@ var Juego = {
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
    que son invisibles. No tenes que preocuparte por ellos.*/
   bordes: [
-    // // Bordes
+    // Bordes
     new Obstaculo('', 0, 5, 961, 18, 0),
     new Obstaculo('', 0, 559, 961, 18, 0),
     new Obstaculo('', 0, 5, 18, 572, 0),
@@ -64,19 +57,17 @@ var Juego = {
   new ZombieCaminante('imagenes/zombie4.png', 750, 200, 10, 10, 1, { desdeX: 750, hastaX: 900, desdeY: 50, hastaY: 200 }),
   new ZombieCaminante('imagenes/zombie1.png', 750, 360, 10, 10, 1.5, { desdeX: 750, hastaX: 900, desdeY: 350, hastaY: 550 }),
   new ZombieCaminante('imagenes/zombie3.png', 750, 400, 10, 10, 1, { desdeX: 750, hastaX: 900, desdeY: 250, hastaY: 350 }),
-  new ZombieCaminante('imagenes/zombie3.png', 750, 300, 10, 10, 4, { desdeX: 750, hastaX: 900, desdeY: 150, hastaY: 200 }),
+  new ZombieCaminante('imagenes/zombie3.png', 750, 300, 10, 10, 1, { desdeX: 750, hastaX: 900, desdeY: 150, hastaY: 200 }),
   new ZombieConductor('imagenes/tren_vertical.png', 644, 0, 30, 90, 1, { desdeX: 644, hastaX: 644, desdeY: 0, hastaY: 480 }, 'v'),
   new ZombieConductor('imagenes/tren_vertical.png', 678, 0, 30, 90, 2, { desdeX: 678, hastaX: 678, desdeY: 0, hastaY: 480 }, 'v'),
-  new ZombieConductor('imagenes/tren_horizontal.png', 120, 322, 90, 30, 5, { desdeX: 0, hastaX: 870, desdeY: 322, hastaY: 322 }, 'h'),
+  new ZombieConductor('imagenes/tren_horizontal.png', 120, 322, 90, 30, 2, { desdeX: 0, hastaX: 870, desdeY: 322, hastaY: 322 }, 'h'),
 
   ]
 
 }
 
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
-a ellos. No hace falta comprender esta parte. Pero si queres agregar tus propies
-imagenes tendras que poner su ruta en la lista para que pueda ser precargada como
-todas las demas. */
+a ellos. */
 Juego.iniciarRecursos = function() {
   Resources.load([
     'imagenes/mapa.png',
@@ -229,7 +220,6 @@ Juego.chequearColisiones = function(x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       obstaculo.chocaJugador(this.jugador);
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
 
       puedeMoverse = false
     }
@@ -281,7 +271,6 @@ Juego.ganoJuego = function() {
 Juego.iniciarRecursos();
 
 // Activa las lecturas del teclado al presionar teclas
-// Documentacion: https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener
 document.addEventListener('keydown', function(e) {
   var allowedKeys = {
     37: 'izq',
